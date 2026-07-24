@@ -1,0 +1,181 @@
+@charset "UTF-8";
+/* ---------- Global ---------- */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+/* ---------- Login Card ---------- */
+
+.login-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.login-card{
+    width:420px;
+    background:#fff;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    text-align:center;
+}
+.error{
+    color: rgb(255, 0, 0);
+    text-align: center;
+    font-weight: bold;
+}
+.success{
+    color: #51ee65;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ---------- Logo ---------- */
+
+.logo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    color:#2563eb;
+    font-size:1.6rem;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.logo i{
+    font-size:2rem;
+}
+
+/* ---------- Doctor Icon ---------- */
+
+.login-icon{
+    width:80px;
+    height:80px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    background:#e8f0ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-icon i{
+    color:#2563eb;
+    font-size:34px;
+}
+
+/* ---------- Heading ---------- */
+
+h2{
+    color:#102a43;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#64748b;
+    margin-bottom:30px;
+    font-size:15px;
+}
+
+/* ---------- Form ---------- */
+
+.input-group{
+    text-align:left;
+    margin-bottom:20px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#334e68;
+}
+
+.input-group input{
+    width:100%;
+    padding:13px 15px;
+    border:1px solid #dbe3ec;
+    border-radius:10px;
+    font-size:15px;
+    transition:.3s;
+}
+
+.input-group input:focus{
+    outline:none;
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+/* ---------- Button ---------- */
+
+.login-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.login-btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+/* ---------- Back ---------- */
+
+.back-home{
+    display:inline-block;
+    margin-top:25px;
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.back-home:hover{
+    color:#1d4ed8;
+}
+
+.back-home i{
+    margin-right:6px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:500px){
+
+.login-card{
+    width:100%;
+    padding:30px 20px;
+}
+
+.logo{
+    font-size:1.4rem;
+}
+
+.logo i{
+    font-size:1.8rem;
+}
+
+}
