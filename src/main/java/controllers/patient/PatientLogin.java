@@ -1,4 +1,4 @@
-package controllers;
+package controllers.patient;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;

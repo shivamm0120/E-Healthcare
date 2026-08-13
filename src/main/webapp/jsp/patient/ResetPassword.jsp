@@ -10,7 +10,7 @@
 
 <title>Reset Password - E-Healthcare</title>
 
-<link rel="stylesheet" href="StyleResetPassword.css">
+<link rel="stylesheet" href="../../css/patient/StyleResetPassword.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 

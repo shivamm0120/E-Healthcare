@@ -1,5 +1,5 @@
 //this servlet prog.is for to check legit user is trying to reset his password
-package controllers;
+package controllers.patient;
 
 import java.io.IOException;
 
