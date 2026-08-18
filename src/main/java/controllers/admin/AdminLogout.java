@@ -13,13 +13,14 @@ import java.io.IOException;
 @WebServlet("/AdminLogout")
 public class AdminLogout extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession hs=request.getSession(false);
 		if(hs!=null)
 		hs.invalidate();
 		
 		
-		response.sendRedirect("AdminLogin.jsp?logout=true");
+		response.sendRedirect("jsp/admin/AdminLogin.jsp?logout=true");
 		
 	}
 

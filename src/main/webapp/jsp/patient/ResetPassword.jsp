@@ -89,7 +89,7 @@
 
 				</div>
 
-				<form class="registration-form" action="ResetPassword" method="post">
+				<form class="registration-form" action="<%= request.getContextPath() %>/ResetPassword" method="post">
 
 					<div class="form-row">
 

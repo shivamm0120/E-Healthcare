@@ -40,7 +40,7 @@
 						healthcare services.</h1>
 				</div>
 
-				<form action="patientReg" method="post" class="registration-form"
+				<form action="<%= request.getContextPath() %>/patientReg" method="post" class="registration-form"
 					novalidate>
 					<p class="login-callout">
 						Already have an account? <a href="PatientLogin.jsp"

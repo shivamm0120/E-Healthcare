@@ -11,7 +11,7 @@
 
     <title>Admin Login | E-Healthcare</title>
 
-    <link rel="stylesheet" href="../../css/admin/DoctorLogin.css">
+    <link rel="stylesheet" href="../../css/doctor/DoctorLogin.css">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -69,7 +69,7 @@
             Sign in to manage the E-Healthcare system.
         </p>
 
-        <form action="AdminLogin" method="post">
+        <form action="<%= request.getContextPath() %>/AdminLogin" method="post">
 
             <div class="input-group">
 

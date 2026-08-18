@@ -31,11 +31,11 @@ public class PatientLogin extends HttpServlet {
 			HttpSession hs= request.getSession(true);
 			hs.setAttribute("pname",patient.getpName());
 			
-			response.sendRedirect("PatientDashboard.jsp");
+			response.sendRedirect("jsp/patient/PatientDashboard.jsp");
 			
 		}
 		else {
-			response.sendRedirect("PatientLogin.jsp?error=true");
+			response.sendRedirect("jsp/patient/PatientLogin.jsp?error=true");
 		}
 	
 	}

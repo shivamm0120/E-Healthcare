@@ -1,232 +1,88 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <%@ page import="models.Admin" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    String contextPath = request.getContextPath();
+    /* Set these Number attributes from the dashboard servlet. Missing values display as 0. */
+    Number activeDoctorsCount = (Number) request.getAttribute("activeDoctorsCount");
+    Number patientsCount = (Number) request.getAttribute("patientsCount");
+    Number totalAppointmentsCount = (Number) request.getAttribute("totalAppointmentsCount");
+    Number pendingAppointmentsCount = (Number) request.getAttribute("pendingAppointmentsCount");
+    Number confirmedAppointmentsCount = (Number) request.getAttribute("confirmedAppointmentsCount");
+    Number completedAppointmentsCount = (Number) request.getAttribute("completedAppointmentsCount");
+    Number cancelledAppointmentsCount = (Number) request.getAttribute("cancelledAppointmentsCount");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard | E-Healthcare</title>
-
-    <link rel="stylesheet" href="../../css/admin/AdminDashboard.css">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Admin Dashboard - E-Healthcare</title>
+    <link rel="stylesheet" href="<%= contextPath %>/css/admin/AdminDashboard.css">
 </head>
-
 <body>
-
-<div class="container">
-
-    <!-- Sidebar -->
-
     <aside class="sidebar">
+        <a class="brand" href="<%= contextPath %>/dashboard" aria-label="E-Healthcare dashboard">
+            <span class="brand-mark" aria-hidden="true">+</span>
+            <span>E-Healthcare</span>
+        </a>
 
-        <div class="logo">
-            <i class="fa-solid fa-house-medical"></i>
-            <h2>E-Healthcare</h2>
-        </div>
-
-        <nav>
-
-            <a href="#" class="active">
-                <i class="fa-solid fa-chart-line"></i>
-                Dashboard
-            </a>
-
-            <a href="#">
-                <i class="fa-solid fa-user-doctor"></i>
-                Manage Doctors
-            </a>
-
-            <a href="#">
-                <i class="fa-solid fa-users"></i>
-                Manage Patients
-            </a>
-
-            <a href="#">
-                <i class="fa-solid fa-calendar-check"></i>
-                Manage Appointments
-            </a>
-
-            <a href="AdminLogout">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Logout
-            </a>
-
+        <nav class="nav-links" aria-label="Admin navigation">
+            <a class="active" href="AdminDashboard.jsp" aria-current="page">Dashboard</a>
+            <a href="<%= contextPath %>/FetchDoctor">Manage Doctors</a>
+            <a href="<%= contextPath %>/FetchPatient">Manage Patients</a>
+            <a href="<%= contextPath %>/FetchAppointment">Manage Appointments</a>
         </nav>
 
+        <a class="logout-btn" href="<%= contextPath %>/AdminLogout">Log out</a>
     </aside>
 
-    <!-- Main Content -->
-
     <main class="main-content">
-
-        <!-- Header -->
-
-        <header>
-
+        <header class="page-header">
             <div>
-
+                <p class="eyebrow">Administration</p>
                 <h1>Admin Dashboard</h1>
-               	<div class="header-actions">
-				<div class="welcome-text">
-					<p>
-						Welcome,
-						<%
-					HttpSession hs = request.getSession(false);
-					%><b>
-						<% Admin admin=(Admin)hs.getAttribute("admin");%>
-						<%=admin.getFullName() %></b>
-						<span class="placeholder-text"></span>
-					</p>
-				</div>
-
+                <p class="welcome-text">Welcome back, shivam kumar</p>
             </div>
-
-            <div class="admin-profile">
-
-                <i class="fa-solid fa-user-shield"></i>
-
+            <div class="user-profile" aria-label="Signed-in administrator">
+                <span class="avatar" aria-hidden="true">S</span>
+                <span>shivam kumar</span>
             </div>
-
         </header>
 
-        <!-- Statistics -->
-
-        <section class="dashboard-cards">
-
-            <div class="card">
-
-                <div class="icon">
-                    <i class="fa-solid fa-user-doctor"></i>
-                </div>
-
-                <h3>Total Doctors</h3>
-
-                <h2>
-                    <!-- Dynamic Value -->
-                </h2>
-
-            </div>
-
-            <div class="card">
-
-                <div class="icon">
-                    <i class="fa-solid fa-users"></i>
-                </div>
-
-                <h3>Total Patients</h3>
-
-                <h2>
-                    <!-- Dynamic Value -->
-                </h2>
-
-            </div>
-
-            <div class="card">
-
-                <div class="icon">
-                    <i class="fa-solid fa-calendar-days"></i>
-                </div>
-
-                <h3>Total Appointments</h3>
-
-                <h2>
-                    <!-- Dynamic Value -->
-                </h2>
-
-            </div>
-
-            <div class="card">
-
-                <div class="icon">
-                    <i class="fa-solid fa-clock"></i>
-                </div>
-
-                <h3>Pending</h3>
-
-                <h2>
-                    <!-- Dynamic Value -->
-                </h2>
-
-            </div>
-
-            <div class="card">
-
-                <div class="icon">
-                    <i class="fa-solid fa-circle-check"></i>
-                </div>
-
-                <h3>Completed</h3>
-
-                <h2>
-                    <!-- Dynamic Value -->
-                </h2>
-
-            </div>
-
-            <div class="card">
-
-                <div class="icon">
-                    <i class="fa-solid fa-circle-xmark"></i>
-                </div>
-
-                <h3>Cancelled</h3>
-
-                <h2>
-                    <!-- Dynamic Value -->
-                </h2>
-
-            </div>
-
+        <section class="metrics-grid" aria-label="System overview">
+            <article class="metric-card">
+                <div><p>Active doctors</p><strong><%= activeDoctorsCount == null ? 0 : activeDoctorsCount %></strong></div>
+                <span class="metric-mark mark-cyan" aria-hidden="true">D</span>
+            </article>
+            <article class="metric-card">
+                <div><p>Total patients</p><strong><%= patientsCount == null ? 0 : patientsCount %></strong></div>
+                <span class="metric-mark mark-purple" aria-hidden="true">P</span>
+            </article>
+            <article class="metric-card">
+                <div><p>Total appointments</p><strong><%= totalAppointmentsCount == null ? 0 : totalAppointmentsCount %></strong></div>
+                <span class="metric-mark mark-blue" aria-hidden="true">A</span>
+            </article>
+            <article class="metric-card">
+                <div><p>Pending</p><strong><%= pendingAppointmentsCount == null ? 0 : pendingAppointmentsCount %></strong></div>
+                <span class="metric-mark mark-yellow" aria-hidden="true">P</span>
+            </article>
+            <article class="metric-card">
+                <div><p>Confirmed</p><strong><%= confirmedAppointmentsCount == null ? 0 : confirmedAppointmentsCount %></strong></div>
+                <span class="metric-mark mark-cyan" aria-hidden="true">C</span>
+            </article>
+            <article class="metric-card">
+                <div><p>Completed</p><strong><%= completedAppointmentsCount == null ? 0 : completedAppointmentsCount %></strong></div>
+                <span class="metric-mark mark-green" aria-hidden="true">✓</span>
+            </article>
+            <article class="metric-card">
+                <div><p>Cancelled</p><strong><%= cancelledAppointmentsCount == null ? 0 : cancelledAppointmentsCount %></strong></div>
+                <span class="metric-mark mark-red" aria-hidden="true">×</span>
+            </article>
         </section>
 
-        <!-- Recent Appointments -->
-
-        <section class="table-section">
-
-            <div class="section-header">
-
-                <h2>Recent Appointments</h2>
-
-            </div>
-
-            <table>
-
-                <thead>
-
-                <tr>
-
-                    <th>Appointment ID</th>
-
-                    <th>Patient</th>
-
-                    <th>Doctor</th>
-
-                    <th>Date</th>
-
-                    <th>Time</th>
-
-                    <th>Status</th>
-
-                </tr>
-
-                </thead>
-
-                <tbody>
-
-                <!-- Dynamic Rows -->
-
-                </tbody>
-
-            </table>
-
+        <section class="overview-note" aria-label="Dashboard information">
+            <h2>System overview</h2>
+            <p>Use the navigation menu to manage doctor accounts, patient records, and appointment details.</p>
         </section>
-
     </main>
-
-</div>
-
 </body>
 </html>

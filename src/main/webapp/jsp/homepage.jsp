@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>E-Healthcare</title>
-<link rel="stylesheet" href="../css/homepage.css" >
+<link rel="stylesheet" href="../css/common/homepage.css" >
  <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
@@ -30,7 +30,7 @@
 							href="PatientLogin.jsp" class="dropdown-item">Patient</a>
 					</div>
 				</div>
-				<a class="register-btn" href="PatientRegisteration.jsp">Register</a>
+				<a class="register-btn" href="patient/PatientRegisteration.jsp">Register</a>
 			</div>
 		</div>
 	</header>
@@ -45,7 +45,7 @@
 					healthcare professionals in a simple and secure way.</p>
 				<div class="hero-buttons">
 					<a class="btn btn-primary" href="#">Book Appointment</a> <a
-						class="btn btn-secondary" href="patientRegisteration.html">Register
+						class="btn btn-secondary" href="patient/PatientRegisteration.jsp">Register
 						Now</a>
 				</div>
 			</div>

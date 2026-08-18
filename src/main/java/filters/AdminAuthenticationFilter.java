@@ -17,7 +17,13 @@ import java.io.IOException;
 /**
  * Servlet Filter implementation class AdminAuthenticationFilter
  */
-@WebFilter("/AdminDashboard.jsp")
+@WebFilter(urlPatterns = {
+	    "/FetchDoctor",
+	    "/AddDoctor",
+	    "/FetchPatient",
+	    "/FetchDashboard",
+	    "/FetchAppointment"
+	})
 public class AdminAuthenticationFilter extends HttpFilter implements Filter {
  
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
@@ -31,7 +37,7 @@ public class AdminAuthenticationFilter extends HttpFilter implements Filter {
 		HttpSession session =req.getSession(false);
 		
 		if(session==null || session.getAttribute("admin")==null) {
-			res.sendRedirect("AdminLogin.jsp");
+			res.sendRedirect("jsp/admin/AdminLogin.jsp");
 			return;
 		}
 		

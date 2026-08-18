@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import models.Patient;
 import util.DBConnection;
@@ -115,9 +117,31 @@ public class PatientDAO {
 		return false;
 		
 	}
-	
-	
-	
+	public List<Patient> fetchAllPatients() {
+		List<Patient>patients=new ArrayList<>();
+		
+		try {
+			Statement stmt= con.createStatement();
+			ResultSet rs=stmt.executeQuery("select * from patients order by patientid");
+			
+			while(rs.next()) {
+				Patient patient= new Patient();
+				patient.setPatientId(rs.getInt("patientid"));
+				patient.setpName(rs.getString("pname"));
+				patient.setGender(rs.getString("gender"));
+				patient.setDate_of_birth(rs.getString("date_of_birth"));
+				patient.setEmail_id(rs.getString("email_id"));
+				patient.setMobile_no(rs.getLong("mobile_no"));
+				
+				patients.add(patient);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return patients ;
+	}
 	
 
 }

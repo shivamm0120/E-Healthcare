@@ -59,7 +59,7 @@
 					<h1>Login to manage your appointments</h1>
 				</div>
 
-				<form class="registration-form" action="PatientLogin" method="post"
+				<form class="registration-form" action="<%= request.getContextPath() %>/PatientLogin" method="post"
 					novalidate>
 					<div class="form-row">
 						<label for="email_id">enter email id <span

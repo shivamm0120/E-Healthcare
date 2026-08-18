@@ -28,13 +28,10 @@ public class AdminLogin extends HttpServlet {
 			HttpSession session =request.getSession();
 			session.setAttribute("admin", admin);
 			
-			System.out.println(admin.getFullName());
-			
-			response.sendRedirect("AdminDashboard.jsp");
+			response.sendRedirect("jsp/admin/AdminDashboard.jsp");
 			
 		}
 		else {
-			System.out.println("admin not found");
 			
 			response.sendRedirect("AdminLogin.jsp?error=true");
 		}

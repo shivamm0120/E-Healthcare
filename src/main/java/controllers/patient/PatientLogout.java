@@ -19,7 +19,7 @@ public class PatientLogout extends HttpServlet {
 		if(hs!=null)
 		hs.invalidate();
 		
-		response.sendRedirect("PatientLogin.jsp?logout=true");
+		response.sendRedirect("jsp/patient/PatientLogin.jsp?logout=true");
 		
 	}
 

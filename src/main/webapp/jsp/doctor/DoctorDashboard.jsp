@@ -1,161 +1,281 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doctor Dashboard | E-Healthcare</title>
+    <meta charset="UTF-8">
+    <title>Doctor Dashboard</title>
 
-<link rel="stylesheet" href="../../css/doctor/DoctorDashboard.css">
-
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet"
+          href="<%= request.getContextPath() %>/css/doctor/DoctorDashboard.css">
 </head>
 
 <body>
 
-	<div class="container">
+    <!-- ================= SIDEBAR ================= -->
 
-		<!-- Sidebar -->
+    <div class="sidebar">
 
-		<aside class="sidebar">
+        <div class="logo">
+            <span class="logo-icon">✚</span>
+            <span>E-Healthcare</span>
+        </div>
 
-			<div class="logo">
-				<i class="fa-solid fa-house-medical"></i> <span>E-Healthcare</span>
-			</div>
+        <nav>
 
-			<nav>
+            <a href="<%= request.getContextPath() %>/jsp/doctor/DoctorDashboard.jsp"
+               class="active">
+                <span>⌂</span>
+                Dashboard
+            </a>
 
-				<a href="#" class="active"> <i class="fa-solid fa-gauge-high"></i>
-					Dashboard
-				</a> <a href="#"> <i class="fa-solid fa-calendar-check"></i> My
-					Appointments
-				</a> <a href="#"> <i class="fa-solid fa-user-group"></i> My Patients
-				</a> <a href="#"> <i class="fa-solid fa-user-doctor"></i> My Profile
-				</a> <a href="#"> <i class="fa-solid fa-right-from-bracket"></i>
-					Logout
-				</a>
+            <a href="<%= request.getContextPath() %>/jsp/doctor/DoctorPatients.jsp">
+                <span>♟</span>
+                My Patients
+            </a>
 
-			</nav>
+            <a href="<%= request.getContextPath() %>/jsp/doctor/DoctorProfile.jsp">
+                <span>♙</span>
+                My Profile
+            </a>
 
-		</aside>
+            <a href="<%= request.getContextPath() %>/DoctorLogout">
+                <span>↪</span>
+                Logout
+            </a>
 
-		<!-- Main Content -->
+        </nav>
 
-		<main class="main-content">
+    </div>
 
-			<header>
 
-				<div>
-					<h1>Doctor Dashboard</h1>
-					<p>
-						Welcome, Dr.
-						<!-- Doctor Name -->
-					</p>
-				</div>
+    <!-- ================= MAIN CONTENT ================= -->
 
-				<div class="doctor-profile">
-					<i class="fa-solid fa-user-doctor"></i>
-				</div>
+    <div class="main-content">
 
-			</header>
+        <!-- Hero Section -->
 
-			<!-- Dashboard Cards -->
+        <section class="hero">
 
-			<section class="dashboard-cards">
+            <div class="hero-content">
 
-				<div class="card">
-					<div class="icon">
-						<i class="fa-solid fa-calendar-day"></i>
-					</div>
+                <p class="welcome">WELCOME BACK</p>
 
-					<h3>Today's Appointments</h3>
+                <h1>
+                    Good Morning, Doctor
+                </h1>
 
-					<h2>
-						<!-- Dynamic Count -->
-					</h2>
-				</div>
+                <p class="hero-text">
+                    Manage your appointments and provide
+                    the best care to your patients.
+                </p>
 
-				<div class="card">
-					<div class="icon">
-						<i class="fa-solid fa-calendar-plus"></i>
-					</div>
+            </div>
 
-					<h3>Upcoming</h3>
+        </section>
 
-					<h2>
-						<!-- Dynamic Count -->
-					</h2>
-				</div>
 
-				<div class="card">
-					<div class="icon">
-						<i class="fa-solid fa-circle-check"></i>
-					</div>
+        <!-- ================= APPOINTMENT CARDS ================= -->
 
-					<h3>Completed</h3>
+        <section class="appointment-summary">
 
-					<h2>
-						<!-- Dynamic Count -->
-					</h2>
-				</div>
+            <a href="<%= request.getContextPath() %>/DoctorDashboard?filter=today"
+               class="summary-card">
 
-				<div class="card">
-					<div class="icon">
-						<i class="fa-solid fa-circle-xmark"></i>
-					</div>
+                <div class="card-icon">📅</div>
 
-					<h3>Cancelled</h3>
+                <div>
+                    <p>Today's Appointments</p>
+                    <h2>5</h2>
+                </div>
 
-					<h2>
-						<!-- Dynamic Count -->
-					</h2>
-				</div>
+            </a>
 
-			</section>
 
-			<!-- Today's Appointments -->
+            <a href="<%= request.getContextPath() %>/DoctorDashboard?filter=upcoming"
+               class="summary-card">
 
-			<section class="table-section">
+                <div class="card-icon">🕐</div>
 
-				<div class="section-header">
+                <div>
+                    <p>Upcoming</p>
+                    <h2>8</h2>
+                </div>
 
-					<h2>Today's Appointments</h2>
+            </a>
 
-				</div>
 
-				<table>
+            <a href="<%= request.getContextPath() %>/DoctorDashboard?filter=completed"
+               class="summary-card">
 
-					<thead>
+                <div class="card-icon">✓</div>
 
-						<tr>
+                <div>
+                    <p>Completed</p>
+                    <h2>21</h2>
+                </div>
 
-							<th>Appointment ID</th>
-							<th>Patient Name</th>
-							<th>Date</th>
-							<th>Time</th>
-							<th>Status</th>
-							<th>Action</th>
+            </a>
 
-						</tr>
 
-					</thead>
+            <a href="<%= request.getContextPath() %>/DoctorDashboard?filter=cancelled"
+               class="summary-card">
 
-					<tbody>
+                <div class="card-icon">✕</div>
 
-						<!-- Dynamic Rows -->
+                <div>
+                    <p>Cancelled</p>
+                    <h2>2</h2>
+                </div>
 
-					</tbody>
+            </a>
 
-				</table>
+        </section>
 
-			</section>
 
-		</main>
+        <!-- ================= APPOINTMENTS ================= -->
 
-	</div>
+        <section class="appointments-section">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Today's Appointments</h2>
+
+                    <p>
+                        Your scheduled appointments for today
+                    </p>
+                </div>
+
+                <a href="<%= request.getContextPath() %>/DoctorDashboard?filter=today"
+                   class="view-all">
+                    View All
+                </a>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Patient</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <!-- Temporary sample data -->
+
+                        <tr>
+
+                            <td>
+                                <div class="patient">
+                                    <div class="patient-avatar">RK</div>
+                                    <span>Rahul Kumar</span>
+                                </div>
+                            </td>
+
+                            <td>15 Aug 2026</td>
+
+                            <td>10:00 AM</td>
+
+                            <td>Regular Checkup</td>
+
+                            <td>
+                                <span class="status confirmed">
+                                    Confirmed
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="action-btn">
+                                    View
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <div class="patient">
+                                    <div class="patient-avatar">AS</div>
+                                    <span>Amit Sharma</span>
+                                </div>
+                            </td>
+
+                            <td>15 Aug 2026</td>
+
+                            <td>11:30 AM</td>
+
+                            <td>Fever</td>
+
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="action-btn">
+                                    View
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <div class="patient">
+                                    <div class="patient-avatar">NS</div>
+                                    <span>Neha Singh</span>
+                                </div>
+                            </td>
+
+                            <td>15 Aug 2026</td>
+
+                            <td>02:00 PM</td>
+
+                            <td>Headache</td>
+
+                            <td>
+                                <span class="status confirmed">
+                                    Confirmed
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="action-btn">
+                                    View
+                                </button>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </div>
 
 </body>
 </html>

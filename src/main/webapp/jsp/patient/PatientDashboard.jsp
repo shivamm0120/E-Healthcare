@@ -27,7 +27,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 						<span class="placeholder-text"></span>
 					</p>
 				</div>
-				<a href="PatientLogout" class="btn btn-secondary logout-btn">Logout</a>
+				<a href="<%= request.getContextPath() %>/PatientLogout" class="btn btn-secondary logout-btn">Logout</a>
 			</div>
 		</div>
 	</header>
